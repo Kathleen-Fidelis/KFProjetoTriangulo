@@ -72,6 +72,10 @@ public class TrianguloServlet extends HttpServlet {
 			response.getWriter().println("É uma reta");
 		}
 		
+		if(var1 == 0 && var2 == 0 && var3 == 0) {
+			response.getWriter().println("Insira algum valor");
+		}
+		
 	}
 
 }
