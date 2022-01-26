@@ -40,17 +40,38 @@ public class TrianguloServlet extends HttpServlet {
 		int var1 = Integer.parseInt(request.getParameter("lado1")); 
 		int var2 = Integer.parseInt(request.getParameter("lado2"));
 		int var3 = Integer.parseInt(request.getParameter("lado3"));
+		int resultado;
 		
 		//Verificando se é um triangulo
-		if(var1 + var2 > var3 || var2 + var3 > var1|| var1 + var3 > var2) {
-			if(var1 == var2 && var1 == var3) {
-				response.getWriter().println("Triângulo equilátero");
-			} else if(var1 == var2 || var2 == var3 || var1 == var3) {
-				response.getWriter().println("Triângulo isóceles");
-			}else{
-				response.getWriter().println("Triângulo escaleno");
+		if(var1 + var2 > var3 || var2 + var3 > var1|| var1 + var3 > var2) {	
+			if(var1 > 0 && var2 > 0 && var3 > 0) {
+				if(var1 == var2 && var1 == var3) {
+					response.getWriter().println("Triângulo equilátero");
+				} else if(var1 == var2 || var2 == var3 || var1 == var3) {
+					response.getWriter().println("Triângulo isóceles");
+				}else{
+					response.getWriter().println("Triângulo escaleno");
+				}
 			}
 		}
+		
+		//Verificando se é um quadrado, retângulo ou uma reta
+		if(var1 == 0 && var2 > 0 && var3 > 0 || var2 == 0 && var3 > 0 && var1 > 0 || var3 == 0 && var1 > 0 && var2 > 0) {
+			if(var1 == var2  || var2 == var3 || var1 == var3) {
+				response.getWriter().println("É possível calcular a área do quadrado");
+			} else if(var1 != var2 || var2 != var3 || var1 != var3) {
+				response.getWriter().println("É possível calcular a área do retângulo");
+			}
+		}
+		
+		if(var1 == 0 && var2 == 0 && var3 > 0) {
+			response.getWriter().println("É uma reta");
+		}else if(var2 == 0 && var3 == 0 && var1 > 0 ) {
+			response.getWriter().println("É uma reta");
+		}else if(var1 == 0 && var3 == 0 && var2 > 0 ) {
+			response.getWriter().println("É uma reta");
+		}
+		
 	}
 
 }
