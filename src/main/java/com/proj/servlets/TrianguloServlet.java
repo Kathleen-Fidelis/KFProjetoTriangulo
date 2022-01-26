@@ -35,7 +35,22 @@ public class TrianguloServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		//doGet(request, response);
+		
+		int var1 = Integer.parseInt(request.getParameter("lado1")); 
+		int var2 = Integer.parseInt(request.getParameter("lado2"));
+		int var3 = Integer.parseInt(request.getParameter("lado3"));
+		
+		//Verificando se é um triangulo
+		if(var1 + var2 > var3 || var2 + var3 > var1|| var1 + var3 > var2) {
+			if(var1 == var2 && var1 == var3) {
+				response.getWriter().println("Triângulo equilátero");
+			} else if(var1 == var2 || var2 == var3 || var1 == var3) {
+				response.getWriter().println("Triângulo isóceles");
+			}else{
+				response.getWriter().println("Triângulo escaleno");
+			}
+		}
 	}
 
 }
